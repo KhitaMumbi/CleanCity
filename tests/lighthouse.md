@@ -19,12 +19,21 @@
 - All pages exceeded time limits during testing
 - Average LCP: 2.7s (should be <2.5s)
 
+  **Lighthouse documentation**
+  
+[home.pdf](https://github.com/user-attachments/files/21265690/home.pdf)
+
+[dashboard lh.pdf](https://github.com/user-attachments/files/21265721/dashboard.lh.pdf)
+
+[community.pdf](https://github.com/user-attachments/files/21265726/community.pdf)
+
 ### Performance Issues
 ```diff
 # Home Page (89)
 - Render-blocking resources (1.4s potential savings)
 - Uncompressed JavaScript (112KiB savings possible)
 - 7 long main-thread tasks
+
 
 # Dashboard (92)
 - 1.5s render-blocking resources
