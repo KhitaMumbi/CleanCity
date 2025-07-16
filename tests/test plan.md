@@ -1,90 +1,93 @@
-CleanCity Final Test Report
-Version: 1.0
-Date: 16/07/2025
-Prepared by: Dev Trio
+markdown
+# CleanCity Test Plan
 
-1. Executive Summary
-This report summarizes the testing activities performed for the CleanCity Waste Pickup Scheduler web application. The testing phase aimed to validate functionality, security, and usability per the Test Plan and Functional Requirements Specification (FRS).
+## 📋 Overview
+| **Project**      | CleanCity Waste Pickup Scheduler |
+|------------------|----------------------------------|
+| **Version**      | 1.0                              |
+| **Test Type**    | Functional, UI, Security, Performance |
+| **Test Level**   | System Testing                   |
+| **Target Env**   | Web (Desktop/Mobile)             |
 
-Key Highlights
-✅ 100% test coverage of critical workflows (authentication, scheduling, admin functions).
-✅ No critical (P1) bugs remaining.
-⚠ 3 medium-severity (P2) bugs documented (UI improvements).
-🚀 Application is ready for production release pending minor fixes.
+## 🎯 Objectives
+1. Validate core user workflows (scheduling, dashboard, admin)
+2. Ensure cross-browser compatibility
+3. Verify security controls (XSS/SQLi prevention)
+4. Confirm performance benchmarks (LCP <2.5s)
 
-2. Test Scope
-Testing Type	Coverage	Status
-Functional Testing	Authentication, Pickup Scheduling, Admin Panel, Feedback, Awareness	✔ Completed
-UI/UX Testing	Responsiveness, Accessibility, Cross-Browser Compatibility	✔ Completed
-Security Testing	Input Validation, Role-Based Access, XSS/SQLi Prevention	✔ Completed
-Performance Testing	Page Load Time, localStorage Handling	✔ Completed
-3. Test Execution Summary
-3.1 Test Cases Executed
-Test Category	Total Cases	Passed	Failed	Skipped	Pass Rate
-Authentication	8	8	0	0	100%
-Pickup Scheduling	6	5	1	0	83%
-Admin Functions	4	4	0	0	100%
-Feedback System	2	2	0	0	100%
-UI/UX	5	4	1	0	80%
-Total	25	23	2	0	92%
-3.2 Defect Summary
-Bug ID	Description	Severity	Status
-BUG-101	Date picker allows past dates in pickup scheduling	🟠 Medium	✅ Fixed
-BUG-102	Admin badge not visible immediately after login	🟡 Low	⏳ Pending
-4. Detailed Findings
-4.1 Functional Testing
-✅ Authentication: All login, registration, and logout flows work correctly.
+## 🛠️ Test Environment
+```bash
+# Desktop
+- OS: Windows 11/macOS Ventura
+- Browsers: Chrome 104, Firefox 103, Safari 16
+- Resolution: 1920x1080
 
-✅ Admin Panel: Role-based access enforced; status updates work as expected.
+# Mobile
+- Devices: iPhone 13, Moto G Power (emulated)
+- OS: iOS 16/Android 12
+- Network: Slow 3G (2000ms RTT)
+📊 Test Matrix
+Functional Testing
+Module	Test Cases	Automation	Owner
+Authentication	8	Manual	QA Team
+Pickup Scheduling	6	Cypress	Dev Team
+Admin Panel	4	Manual	QA Lead
+Non-Functional Testing
+Type	Tools	Metrics
+Performance	Lighthouse, WebPageTest	LCP, CLS, TBT
+Accessibility	Axe, WAVE	WCAG 2.1 AA
+Security	OWASP ZAP	XSS/SQLi prevention
+⏱️ Test Schedule
 
-⚠ Pickup Scheduling:
 
-BUG-101 allowed past dates (fixed by adding client-side validation).
+<img width="3840" height="660" alt="deepseek_mermaid_20250716_c391e2" src="https://github.com/user-attachments/assets/db9ed0fc-98c9-4713-aa02-29c2506c1220" />
 
-Filtering by location in Dashboard had a minor UI glitch (resolved).
 
-4.2 UI/UX Testing
-✅ Responsive Design: Works well on mobile (Chrome, Safari), tablets, and desktop.
 
-⚠ Accessibility:
+🐞 Defect Management
+Severity Classification
+Level	Criteria
+Critical	Blocks core functionality (e.g., login failure)
+Major	Key feature broken (e.g., can't submit pickup request)
+Minor	Cosmetic issues (e.g., misaligned button)
+Workflow
+Diagram
+Code
 
-BUG-102: Admin badge not immediately visible (low priority, fix scheduled).
 
-Improved contrast ratios for better readability.
 
-4.3 Security Testing
-✅ No SQLi/XSS vulnerabilities found in input fields.
 
-✅ Role-based access control works correctly (users cannot access /admin).
 
-4.4 Performance Testing
-Page Load Time: <2s on desktop, <3s on mobile (meets requirements).
 
-localStorage Handling: Data persists correctly across sessions.
 
-5. Risks & Issues
-Risk/Observation	Impact	Mitigation
-localStorage limits (~5MB)	Low	Added warning for data export
-Slow rendering on low-end Android devices	Medium	Optimized image loading
-6. Conclusion & Recommendations
-6.1 Release Readiness
-✅ GO for production deployment with minor pending fixes (BUG-102).
 
-Recommendations:
+✅ Exit Criteria
+All Critical/Major defects resolved
 
-Add a "Forgot Password" feature in the next sprint.
+100% test case execution
 
-Implement automated testing for regression suites.
+Performance metrics met:
 
-6.2 Sign-Off
-Role	Name	Approval	Remarks
-QA Lead	[Bakhita Muthama]	✅ Approved	Ready for prod
-Dev Lead	[NhlawulekoNzam Makhahlele]	✅ Approved	Minor fixes pending
-Product Manager	[Bakhita Muthama & NhlawulekoNzam Makhahlele]	✅ Approved	Schedule release
-Attachments:
+LCP <2.5s
 
-Full Test Case Logs
+CLS <0.1
 
-Bug Reports (Postman/GitHub)
+TBT <200ms
 
-🚀 CleanCity is now ready to clean up the world! 🌍
+📝 Metrics Tracking
+Metric	Target	Current
+Test Coverage	100%	92%
+Defect Density	<0.5	0.3
+Automation Coverage	60%	45%
+📌 Risks & Mitigation
+Risk	Mitigation Strategy
+localStorage limits	Add data export warning
+Slow mobile performance	Optimize image loading
+Timezone handling in scheduling	Test with multiple timezone settings
+👥 Team
+Role	Contact
+QA Lead	@qa-lead
+Dev Owner	@frontend-dev
+Product Owner	@product-manager
+Last Updated: 2023-07-25
+Next Review: 2023-08-01
