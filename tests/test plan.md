@@ -1,93 +1,97 @@
-markdown
 # CleanCity Test Plan
 
-## 📋 Overview
-| **Project**      | CleanCity Waste Pickup Scheduler |
-|------------------|----------------------------------|
-| **Version**      | 1.0                              |
-| **Test Type**    | Functional, UI, Security, Performance |
-| **Test Level**   | System Testing                   |
-| **Target Env**   | Web (Desktop/Mobile)             |
+## 1. Introduction
+### 1.1 Purpose
+Validate functionality of CleanCity Waste Pickup Scheduler web application against requirements.
 
-## 🎯 Objectives
-1. Validate core user workflows (scheduling, dashboard, admin)
-2. Ensure cross-browser compatibility
-3. Verify security controls (XSS/SQLi prevention)
-4. Confirm performance benchmarks (LCP <2.5s)
+### 1.2 Scope
+- Functional: Authentication, Scheduling, Admin, Feedback
+- Non-functional: Performance, Accessibility, Security
+- Browsers: Chrome, Firefox, Safari, Edge
+- Devices: Desktop, Tablet, Mobile
 
-## 🛠️ Test Environment
-```bash
-# Desktop
-- OS: Windows 11/macOS Ventura
-- Browsers: Chrome 104, Firefox 103, Safari 16
-- Resolution: 1920x1080
+## 2. Test Approach
+### 2.1 Test Types
+| Type            | Technique       | Tools              |
+|-----------------|-----------------|--------------------|
+| Functional      | Black-box       | Manual/Cypress     |
+| UI              | Visual/UX       | Axe, WAVE          |
+| Performance     | Metrics analysis| Lighthouse         |
+| Security        | Vulnerability   | OWASP ZAP          |
 
-# Mobile
-- Devices: iPhone 13, Moto G Power (emulated)
-- OS: iOS 16/Android 12
-- Network: Slow 3G (2000ms RTT)
-📊 Test Matrix
-Functional Testing
-Module	Test Cases	Automation	Owner
-Authentication	8	Manual	QA Team
-Pickup Scheduling	6	Cypress	Dev Team
-Admin Panel	4	Manual	QA Lead
-Non-Functional Testing
-Type	Tools	Metrics
-Performance	Lighthouse, WebPageTest	LCP, CLS, TBT
-Accessibility	Axe, WAVE	WCAG 2.1 AA
-Security	OWASP ZAP	XSS/SQLi prevention
-⏱️ Test Schedule
+### 2.2 Test Levels
+- Smoke Testing: Critical path validation
+- Regression: Post-fix verification
+- E2E: Complete user workflows
 
+## 3. Test Environment
+### 3.1 Hardware
+- Desktop: 8GB RAM, Core i5
+- Mobile: iPhone 13, Moto G Power (emulated)
 
-<img width="3840" height="660" alt="deepseek_mermaid_20250716_c391e2" src="https://github.com/user-attachments/assets/db9ed0fc-98c9-4713-aa02-29c2506c1220" />
+### 3.2 Software
+- OS: Windows 11, macOS Ventura, iOS 16, Android 12
+- Browsers: Latest stable versions of Chrome, Firefox, Safari, Edge
 
+## 4. Test Cases
+### 4.1 Authentication
+TC-001: Valid user registration  
+TC-002: Login with invalid credentials  
+TC-003: Admin role access control  
 
+### 4.2 Pickup Scheduling
+TC-004: Submit valid pickup request  
+TC-005: Validate date restrictions  
+TC-006: Location-based filtering  
 
-🐞 Defect Management
-Severity Classification
-Level	Criteria
-Critical	Blocks core functionality (e.g., login failure)
-Major	Key feature broken (e.g., can't submit pickup request)
-Minor	Cosmetic issues (e.g., misaligned button)
-Workflow
-Diagram
-Code
+## 5. Execution Schedule
+| Phase          | Start Date | Duration | Owner       |
+|----------------|------------|----------|-------------|
+| Test Design    | 2023-08-01 | 3 days   | QA Team     |
+| Functional     | 2023-08-04 | 5 days   | QA Team     |
+| Performance    | 2023-08-09 | 2 days   | DevOps      |
+| Bug Fixing     | 2023-08-11 | 3 days   | Dev Team    |
+| Final Sign-off | 2023-08-14 | 1 day    | QA Lead     |
 
+## 6. Defect Management
+### 6.1 Severity Levels
+1. Critical: Blocks core functionality
+2. Major: Key feature failure
+3. Minor: Cosmetic/UI issues
 
+### 6.2 Workflow
+1. Log defect in Jira
+2. Triage within 24hrs
+3. Fix priority assignment
+4. Retest after resolution
 
+## 7. Exit Criteria
+- 100% test case execution
+- All Critical/Major defects resolved
+- Performance targets met:
+  - LCP <2.5s
+  - CLS <0.1
+  - TBT <200ms
 
+## 8. Risks
+| Risk                          | Mitigation                     |
+|-------------------------------|--------------------------------|
+| Timezone handling issues      | Test with multiple timezones   |
+| localStorage data loss        | Implement data export          |
+| Mobile rendering delays       | Optimize image assets          |
 
+## 9. Team
+- QA Lead: @qa-lead
+- Dev Owner: @frontend-dev
+- Product Owner: @product-manager
 
+## 10. Appendix
+### Test Data
+- Valid users: user@cleancity.com / password123
+- Admin: admin@cleancity.com / admin123
 
+### References
+- FRS v1.0
+- WCAG 2.1 Guidelines
 
-✅ Exit Criteria
-All Critical/Major defects resolved
-
-100% test case execution
-
-Performance metrics met:
-
-LCP <2.5s
-
-CLS <0.1
-
-TBT <200ms
-
-📝 Metrics Tracking
-Metric	Target	Current
-Test Coverage	100%	92%
-Defect Density	<0.5	0.3
-Automation Coverage	60%	45%
-📌 Risks & Mitigation
-Risk	Mitigation Strategy
-localStorage limits	Add data export warning
-Slow mobile performance	Optimize image loading
-Timezone handling in scheduling	Test with multiple timezone settings
-👥 Team
-Role	Contact
-QA Lead	@qa-lead
-Dev Owner	@frontend-dev
-Product Owner	@product-manager
-Last Updated: 2023-07-25
-Next Review: 2023-08-01
+**Last Updated**: 2023-07-25
